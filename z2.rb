@@ -1,24 +1,13 @@
 
 def validation (str)
-	length_string = str.length
-	left = 0
-	right = 0
-	for i in 0..length_string
-		x=str[i]
-		if x == "("
-			left+=1
-		elsif x == ")"
-			right+=1
-		end
-		if right>left
-			return "Ne validnaya stroka. Zakrytyh bolshe"
-			
-		end
+	count = 0
+	str.length.times do |x|
+		count+=1 if str[x] == "("
+		count-=1 if str[x] == ")"
+		return "Zakrytyh bolshe" if count < 0
 	end
-	if left==right
-		return "Validnaya stroka!!!"
-	else return "Different number"
-	end
+	return "Otkrytyh bolshe" if count != 0
+	return "Validnaya stroka!!!"
 end
 		
 str = gets.chomp.to_s
