@@ -1,9 +1,8 @@
 def factorial n
-	fact = 1
-	n.times {|i|  fact*=i+1}
-	puts "#{fact}"
+	return 1 if n==1
+	return n* factorial(n-1)
 end
 
 print "Vvedite factorial \n"
 n = gets.chomp.to_i
-factorial(n)
+answer = factorial(n)
